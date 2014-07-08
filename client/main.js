@@ -13,7 +13,6 @@ var comboView = new ComboView({model: comboModel})
 $('body').append(comboView.prerender());
 
 setTimeout(function(){
-  console.log(document.getElementById("comboStats").getContext("2d"));
   $('body').append(comboView.render());
 }, 100);
 

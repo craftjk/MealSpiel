@@ -1,25 +1,15 @@
 var ComboView = Backbone.View.extend({
-  tagName: 'table',
+  tagName: 'div',
 
   template: _.template( '<tr><td>' +
-                        '<canvas id="comboStats" width="100" height="100"></canvas>' + 
+                        '<canvas id="comboStats" width="400" height="400"></canvas>' + 
                         '</td></td></tr>'
                       ),
-
-  // template: _.template('<tr><td><%= calories %></td></td></tr>' +
-  //                         '<tr><td><%= protein %></td></td></tr>' +
-  //                         '<tr><td><%= fat %></td></td></tr>' +
-  //                         '<tr><td><%= carbs %></td></td></tr>' +
-  //                         '<tr><td><%= sodium %></td></td></tr>' +
-  //                         '<tr><td><%= name %></td></td></tr>'
-  //                        ),
 
   initialize: function() {
     this.on('change', function() {
       this.render();
     }, this);
-    this.prerender();
-    this.render();
   },
 
   prerender: function() {
@@ -49,9 +39,8 @@ var ComboView = Backbone.View.extend({
       ];
 
     var ctx = document.getElementById("comboStats").getContext("2d");
-    console.log(ctx)
-    new Chart(ctx).PolarArea(data);
-    return this.$el.html(this.template(this.model.attributes));
+    var newChart = new Chart(ctx).Pie(data);
+    return newChart;
   },
 
 });
