@@ -1,11 +1,6 @@
 var ComboView = Backbone.View.extend({
   tagName: 'div',
 
-  template: _.template( '<tr><td>' +
-                        '<canvas id="comboStats" width="400" height="400"></canvas>' + 
-                        '</td></td></tr>'
-                      ),
-
   initialize: function() {
     this.on('change', function() {
       this.render();
@@ -13,10 +8,13 @@ var ComboView = Backbone.View.extend({
   },
 
   prerender: function() {
-    return this.$el.html('<canvas id="comboStats" width="100" height="100"></canvas>');
+    return this.$el.html('<tr><th> ' + this.model.attributes.name + '</th></tr>' + 
+                         '<tr><td><canvas id="' + this.model.attributes.name + '" width="100" height="100"></canvas></td></tr>'
+                         );
   },
 
   render: function() {
+    $('body').append(this.prerender());
     var data = [
           {
               value: this.model.attributes.protein,
@@ -38,7 +36,7 @@ var ComboView = Backbone.View.extend({
           }
       ];
 
-    var ctx = document.getElementById("comboStats").getContext("2d");
+    var ctx = document.getElementById(this.model.attributes.name).getContext("2d");
     var newChart = new Chart(ctx).Pie(data);
     return newChart;
   },

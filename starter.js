@@ -99,75 +99,6 @@ var mcMenu = {
         ]
 };
 
-var Combo = Backbone.Model.extend({ 
-  defaults: { 
-    calories: 0,   
-    protein: 0,
-    fat: 0, 
-    carbs: 0, 
-    sodium: 0,
-    name: '' 
-  }
-});
-
-
-var ComboView = Backbone.View.extend({
-  tagName: 'table',
-
-  template: _.template( '<tr><td>' +
-                        '<canvas id="comboStats" width="100" height="100"></canvas>' + 
-                        '</td></td></tr>'
-                      ),
-
-  // template: _.template('<tr><td><%= calories %></td></td></tr>' +
-  //                         '<tr><td><%= protein %></td></td></tr>' +
-  //                         '<tr><td><%= fat %></td></td></tr>' +
-  //                         '<tr><td><%= carbs %></td></td></tr>' +
-  //                         '<tr><td><%= sodium %></td></td></tr>' +
-  //                         '<tr><td><%= name %></td></td></tr>'
-  //                        ),
-
-  initialize: function() {
-    this.on('change', function() {
-      this.render();
-    }, this);
-    this.prerender();
-    this.render();
-  },
-
-  prerender: function() {
-    return this.$el.html('<canvas id="comboStats" width="100" height="100"></canvas>');
-  },
-
-  render: function() {
-    var data = [
-          {
-              value: this.model.attributes.protein,
-              color:"#F7464A",
-              highlight: "#FF5A5E",
-              label: "Protein"
-          },
-          {
-              value: this.model.attributes.fat,
-              color: "#46BFBD",
-              highlight: "#5AD3D1",
-              label: "Fat"
-          },
-          {
-              value: this.model.attributes.carbs,
-              color: "#FDB45C",
-              highlight: "#FFC870",
-              label: "Carbs"
-          }
-      ];
-
-    // var ctx = document.getElementById("comboStats").getContext("2d");
-    // new Chart(ctx).PolarArea(data);
-    return this.$el.html(this.template(this.model.attributes));
-  },
-
-});
-
 
 var bigMacComboData = { "calories": 1090, 
             "protein": 29,
@@ -178,30 +109,6 @@ var bigMacComboData = { "calories": 1090,
 
 var comboModel = new Combo(bigMacComboData);
 var comboView = new ComboView({model: comboModel})
-
-var Menu = Backbone.Collection.extend({
-  model: Combo,
-});
-
-var MenuView = Backbone.View.extend({
-  tagName: 'table',
-
-  initialize: function() {},
-
-  render: function() {
-    this.collection.each(function(comboModel) {
-      // make a new view from the bookmodel
-      newComboViewEl = new ComboView({model: comboModel}).$el;
-
-      // append that to the page
-      this.$el.append(newComboViewEl);
-    }, this);
-    return this.$el;
-  }
-});
-
-
-console.log("in starter.js")
 
 var menu = new Menu(mcMenu.combos);
 
