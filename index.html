@@ -7,40 +7,37 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="styles/main.css">
   </head>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
   <body>
 
-    <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-        </ul>
-        <h3 class="text-muted">FastFood.me</h3>
-      </div>
-
-      <div class="jumbotron">
-        <h1>FastFood.me </h1>
-        <p class="lead">
-          Plan out your fast food cravings with this meal plan generator.
-          <br></br>
-          <img src="img/food-icon.png" alt="Yum!"><br>
-        </p>
-        <p>I want to eat calories in X meals <a class="btn btn-lg btn-success" ng-href="#">Order</span></a></p>
-        <form name="mealPlanForm" ng-controller="mealPlanController">
-          <input ng-model="val" ng-pattern="/^\d+$/" name="anim" class="my-input" />
-        </form>
-      </div>
-
-      <div class="footer">
-        <p>Based on <a href="http://www.eatthismuch.com">www.eatthismuch.com</a></p>
-      </div>
+    <div class="jumbotron">
+      <h1>FastFood.me </h1>
+      <p class="lead">
+        Nutritional analysis of fast food menus.
+        <br></br>
+        <img src="img/food-icon.png" alt="Yum!"><br>
+      </p>
+      <p>I want to view the 
+        <select class="restaurants">
+          <option selected disabled hidden value=''></option>
+          <option value="McDonalds">McDonalds</option>
+          <option value="Burger King">Burger King</option>
+        </select> 
+        value meal menu </p>
     </div>
+
+    <div class="footer">
+    </div>
+
+    <div class="menu"></div>
+
 
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    <script src="./bower_components/chartjs/Chart.js"></script>
+    <script src="bower_components/chartjs/Chart.js"></script>
 
     <script src="client/models/Combo.js"></script>
     <script src="client/collections/Menu.js"></script>

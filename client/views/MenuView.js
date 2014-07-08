@@ -3,7 +3,8 @@ var MenuView = Backbone.View.extend({
 
   template: _.template(''),
 
-  initialize: function() {},
+  initialize: function() {
+  },
 
   render: function() {
     this.collection.each(function(comboModel) {
