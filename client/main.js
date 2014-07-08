@@ -215,6 +215,8 @@ var kingMenu = {
 $('select.restaurants').change(function() {
   if ($('select.restaurants')[0].value === "McDonalds") {
     console.log("activate mcmenu render");
+    var menu = new Menu(mcMenu.combos);
+    var menuView = new MenuView({collection: menu});
   } else if ($('select.restaurants')[0].value === "Burger King") {
     console.log("burger king selected")
     var menu = new Menu(kingMenu.combos);
@@ -225,4 +227,3 @@ $('select.restaurants').change(function() {
 });
 
 
-$('body').append(menuView.render());

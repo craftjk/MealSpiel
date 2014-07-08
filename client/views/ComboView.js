@@ -24,7 +24,7 @@ var ComboView = Backbone.View.extend({
 
   render: function() {
     this.prerender();
-    if (this.model.attributes.id.charAt(0) === 'k') { // burger king meal
+    if (typeof this.model.attributes.id === 'string') { // burger king meal
       var imgSrc = "img/king-" + this.model.attributes.name.split(' ').join('-') + ".png";
     } else { // mcdonalds meal
       var imgSrc = "img/mcdonalds-" + this.model.attributes.name.split(' ').join('-') + "-Extra-Value-Meals.png";

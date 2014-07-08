@@ -4,11 +4,12 @@ var MenuView = Backbone.View.extend({
   template: _.template(''),
 
   initialize: function() {
+    this.render();
   },
 
   render: function() {
+    $('div.menu').empty();
     this.collection.each(function(comboModel) {
-      // make a new view from the bookmodel
       newComboViewEl = new ComboView({model: comboModel}).render();
 
       // append that to the page
