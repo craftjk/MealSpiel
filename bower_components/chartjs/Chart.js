@@ -253,7 +253,7 @@ window.Chart = function(context){
 			animationEasing : "easeOutBounce",
 			animateRotate : true,
 			animateScale : false,
-			onAnimationComplete : null
+			onAnimationComplete : null,
 		};		
 
 		var config = (options)? mergeChartConfig(chart.Pie.defaults,options) : chart.Pie.defaults;
@@ -273,7 +273,7 @@ window.Chart = function(context){
 			animationEasing : "easeOutBounce",
 			animateRotate : true,
 			animateScale : false,
-			onAnimationComplete : null
+			onAnimationComplete : null,
 		};		
 
 		var config = (options)? mergeChartConfig(chart.Doughnut.defaults,options) : chart.Doughnut.defaults;
@@ -706,6 +706,10 @@ window.Chart = function(context){
 		animationLoop(config,null,drawPieSegments,ctx);
 				
 		function drawPieSegments (animationDecimal){
+			ctx.font = config.labelFontStyle + " " + config.labelFontSize+"px " + config.labelFontFamily;
+      ctx.fillStyle = 'black';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(data[0].value + "%", width/2 - 20, width/2, 200);
 			var cumulativeAngle = -Math.PI/2,
 			scaleAnimation = 1,
 			rotateAnimation = 1;

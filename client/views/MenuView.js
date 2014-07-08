@@ -1,6 +1,8 @@
 var MenuView = Backbone.View.extend({
   tagName: 'table',
 
+  template: _.template(''),
+
   initialize: function() {},
 
   render: function() {
